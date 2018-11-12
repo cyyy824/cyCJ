@@ -82,10 +82,6 @@ namespace cyCJ.Views
         public virtual void PaintResult(List<Person> persons,Graphics g)
         {
             PaintDrawBg(g);
-            if(config.isDrawMask!=0)
-                PaintMask(g);
-            PaintTitle(g);
-            PaintWinPrize(persons,g);
         }
         public virtual void PaintCancel(Graphics g)
         {
@@ -98,11 +94,8 @@ namespace cyCJ.Views
         }
         public virtual List<Person> PaintDrawing(Graphics g)
         {
-            PaintDrawBg(g);
-            if(config.isDrawMask!=0)
-                PaintMask(g);
-            PaintTitle(g);
-            return PaintDrawText(g);
+            return null;
+
         }
 
 

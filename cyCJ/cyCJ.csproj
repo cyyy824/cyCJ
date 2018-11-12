@@ -104,8 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\PublicDB.cs" />
-    <Compile Include="Models\CFont.cs" />
-    <Compile Include="Models\Config.cs" />
     <Compile Include="Forms\DrawPrizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,7 +122,6 @@
     <Compile Include="Forms\EditPrizeForm.Designer.cs">
       <DependentUpon>EditPrizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ImageDB.cs" />
     <Compile Include="Forms\LocationSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +134,30 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PersonSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PersonSetForm.Designer.cs">
+      <DependentUpon>PersonSetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrizeSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrizeSetForm.Designer.cs">
+      <DependentUpon>PrizeSetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WinPrizeShowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WinPrizeShowForm.Designer.cs">
+      <DependentUpon>WinPrizeShowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CollectionBase.cs" />
+    <Compile Include="Models\DBContext.cs" />
+    <Compile Include="Models\PrizeCollection.cs" />
+    <Compile Include="Util\CFont.cs" />
+    <Compile Include="Models\Config.cs" />
+    <Compile Include="Models\ImageDB.cs" />
     <Compile Include="Models\PrizeDrawPara.cs" />
     <Compile Include="SQLiteHelper\SQLiteColumn.cs" />
     <Compile Include="SQLiteHelper\SQLiteColumnList.cs" />
@@ -147,19 +168,7 @@
     <Compile Include="Views\PaintTextView.cs" />
     <Compile Include="Views\PaintViewBase.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="Forms\PersonSetForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PersonSetForm.Designer.cs">
-      <DependentUpon>PersonSetForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Prize.cs" />
-    <Compile Include="Forms\PrizeSetForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PrizeSetForm.Designer.cs">
-      <DependentUpon>PrizeSetForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
@@ -168,12 +177,6 @@
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\WinPrize.cs" />
-    <Compile Include="Forms\WinPrizeShowForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\WinPrizeShowForm.Designer.cs">
-      <DependentUpon>WinPrizeShowForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\DrawPrizeForm.resx">
       <DependentUpon>DrawPrizeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +198,9 @@
     <EmbeddedResource Include="Forms\PrizeSetForm.resx">
       <DependentUpon>PrizeSetForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WinPrizeShowForm.resx">
+      <DependentUpon>WinPrizeShowForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -208,9 +214,6 @@
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\WinPrizeShowForm.resx">
-      <DependentUpon>WinPrizeShowForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

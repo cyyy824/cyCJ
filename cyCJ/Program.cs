@@ -17,6 +17,8 @@ namespace cyCJ
         {
             var config = cyCJ.Models.ConfigSingleton.Instance;
 
+            cyCJ.Models.DBContext.InitDB();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
          //   Application.Run(new cyCJ.Forms.MainForm());
