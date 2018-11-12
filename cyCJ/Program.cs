@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace cyCJ
 {
     static class Program
@@ -14,9 +15,11 @@ namespace cyCJ
         [STAThread]
         static void Main()
         {
+            var config = cyCJ.Models.ConfigSingleton.Instance;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+         //   Application.Run(new cyCJ.Forms.MainForm());
         }
     }
 }

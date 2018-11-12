@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>cyCJ</RootNamespace>
     <AssemblyName>cyCJ</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -27,6 +27,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -37,6 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -46,12 +49,19 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\Net40\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI">
       <HintPath>..\Net40\NPOI.dll</HintPath>
     </Reference>
@@ -61,10 +71,27 @@
     <Reference Include="NPOI.OpenXml4Net">
       <HintPath>..\Net40\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
+    <Reference Include="SQLite-net, Version=1.5.231.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\sqlite-net-pcl.1.5.231\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green, Version=1.1.11.121, Culture=neutral, PublicKeyToken=a84b7dcfb1391f7f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\net45\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=1.1.11.121, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\net45\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=1.1.11.121, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.11\lib\net45\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.e_sqlite3, Version=1.1.11.121, Culture=neutral, PublicKeyToken=9c301db686d0bd12, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.net45.1.1.11\lib\net45\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\System.Data.SQLite\2010\bin\System.Data.SQLite.dll</HintPath>
+    <Reference Include="System.Data.SQLite, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.109.2\lib\net40\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,59 +99,65 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CFont.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="DrawPrizeForm.cs">
+    <Compile Include="DB\PublicDB.cs" />
+    <Compile Include="Models\CFont.cs" />
+    <Compile Include="Models\Config.cs" />
+    <Compile Include="Forms\DrawPrizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DrawPrizeForm.Designer.cs">
+    <Compile Include="Forms\DrawPrizeForm.Designer.cs">
       <DependentUpon>DrawPrizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditPersonForm.cs">
+    <Compile Include="Forms\EditPersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditPersonForm.Designer.cs">
+    <Compile Include="Forms\EditPersonForm.Designer.cs">
       <DependentUpon>EditPersonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditPrizeForm.cs">
+    <Compile Include="Forms\EditPrizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditPrizeForm.Designer.cs">
+    <Compile Include="Forms\EditPrizeForm.Designer.cs">
       <DependentUpon>EditPrizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageDB.cs" />
-    <Compile Include="LocationSetForm.cs">
+    <Compile Include="Models\ImageDB.cs" />
+    <Compile Include="Forms\LocationSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LocationSetForm.Designer.cs">
+    <Compile Include="Forms\LocationSetForm.Designer.cs">
       <DependentUpon>LocationSetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PaintNameView.cs" />
-    <Compile Include="PaintTextView.cs" />
-    <Compile Include="PaintViewBase.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="PersonSetForm.cs">
+    <Compile Include="Models\PrizeDrawPara.cs" />
+    <Compile Include="SQLiteHelper\SQLiteColumn.cs" />
+    <Compile Include="SQLiteHelper\SQLiteColumnList.cs" />
+    <Compile Include="SQLiteHelper\SQLiteHelper.cs" />
+    <Compile Include="SQLiteHelper\SQLiteTable.cs" />
+    <Compile Include="Util\LogHelper.cs" />
+    <Compile Include="Views\PaintNameView.cs" />
+    <Compile Include="Views\PaintTextView.cs" />
+    <Compile Include="Views\PaintViewBase.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Forms\PersonSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PersonSetForm.Designer.cs">
+    <Compile Include="Forms\PersonSetForm.Designer.cs">
       <DependentUpon>PersonSetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Prize.cs" />
-    <Compile Include="PrizeSetForm.cs">
+    <Compile Include="Models\Prize.cs" />
+    <Compile Include="Forms\PrizeSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrizeSetForm.Designer.cs">
+    <Compile Include="Forms\PrizeSetForm.Designer.cs">
       <DependentUpon>PrizeSetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -134,32 +167,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="WinPrize.cs" />
-    <Compile Include="WinPrizeShowForm.cs">
+    <Compile Include="Models\WinPrize.cs" />
+    <Compile Include="Forms\WinPrizeShowForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinPrizeShowForm.Designer.cs">
+    <Compile Include="Forms\WinPrizeShowForm.Designer.cs">
       <DependentUpon>WinPrizeShowForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DrawPrizeForm.resx">
+    <EmbeddedResource Include="Forms\DrawPrizeForm.resx">
       <DependentUpon>DrawPrizeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditPersonForm.resx">
+    <EmbeddedResource Include="Forms\EditPersonForm.resx">
       <DependentUpon>EditPersonForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditPrizeForm.resx">
+    <EmbeddedResource Include="Forms\EditPrizeForm.resx">
       <DependentUpon>EditPrizeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LocationSetForm.resx">
+    <EmbeddedResource Include="Forms\LocationSetForm.resx">
       <DependentUpon>LocationSetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PersonSetForm.resx">
+    <EmbeddedResource Include="Forms\PersonSetForm.resx">
       <DependentUpon>PersonSetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrizeSetForm.resx">
+    <EmbeddedResource Include="Forms\PrizeSetForm.resx">
       <DependentUpon>PrizeSetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -176,9 +209,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinPrizeShowForm.resx">
+    <EmbeddedResource Include="Forms\WinPrizeShowForm.resx">
       <DependentUpon>WinPrizeShowForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -190,7 +224,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pictype.bmp" />
@@ -216,5 +252,22 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.txt" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.109.2\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net40\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.109.2\build\net40\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets'))" />
+  </Target>
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" />
 </Project>
