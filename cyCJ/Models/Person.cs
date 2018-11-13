@@ -63,53 +63,6 @@ namespace cyCJ.Models
         }
 
     }
-    public class PersonCollection
-    {
-        private string connStr;
-        private List<Person> persons;
-//        private Random random;
-        public PersonCollection(string connStr)
-        {
-            this.connStr = connStr;
-            persons = new List<Person>();
-//            random = new Random();
-        }
-
-        public void Clear()
-        {
-        }
-        public Person GetPerson(int index)
-        {
-            return persons[index];
-        }
-        public void UpdatePerson(int index,Person person)
-        {
-            if (index >= Count)
-                return;
-
-        }
-        public void DeletePerson(int index)
-        {
-            if (index >= Count)
-                return;
-        }
-        public int Count
-        {
-            get { return persons.Count; }
-        }
-
-        public bool Add(Person person)
-        {
-            if (persons.Contains(person))
-                return false;
-            persons.Add(person);
-            return true;
-        }
-        public void ReadDB()
-        {
-            persons.Clear();
-        }
-    }
 
     public class Person
     {
@@ -118,10 +71,8 @@ namespace cyCJ.Models
         public string Name { get; set; }
         public string Message { get; set; }
 
-        public Person(string name,string message="")
+        public Person()
         {
-            Name = name;
-            Message = message;
         }
 
         public override bool Equals(object obj)

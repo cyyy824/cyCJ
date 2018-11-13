@@ -154,11 +154,14 @@
     </Compile>
     <Compile Include="Models\CollectionBase.cs" />
     <Compile Include="Models\DBContext.cs" />
+    <Compile Include="Models\DrawParaCollection.cs" />
+    <Compile Include="Models\PersonCollection.cs" />
     <Compile Include="Models\PrizeCollection.cs" />
+    <Compile Include="Models\WinPrizeCollection.cs" />
     <Compile Include="Util\CFont.cs" />
     <Compile Include="Models\Config.cs" />
     <Compile Include="Models\ImageDB.cs" />
-    <Compile Include="Models\PrizeDrawPara.cs" />
+    <Compile Include="Models\DrawPara.cs" />
     <Compile Include="SQLiteHelper\SQLiteColumn.cs" />
     <Compile Include="SQLiteHelper\SQLiteColumnList.cs" />
     <Compile Include="SQLiteHelper\SQLiteHelper.cs" />

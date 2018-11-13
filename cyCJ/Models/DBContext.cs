@@ -21,7 +21,6 @@ namespace cyCJ.Models
                 db.CreateTable<WinPrize>();
                 db.CreateTable<DrawPara>();
                 db.Insert(new DrawPara());
-     
             }
         }
         public static SQLiteConnection DBConnection

@@ -9,57 +9,6 @@ using SQLite;
 
 namespace cyCJ.Models
 {
-    public class WinPrizeCollection
-    {
-        private List<WinPrize> winprizes;
-        private string connStr;
-        public WinPrizeCollection(string connStr)
-        {
-            this.connStr = connStr;
-            winprizes = new List<WinPrize>();
-        }
-
-        public void Clear()
-        {
-            winprizes.Clear();
-        }
-        public void Add(WinPrize prize)
-        {
-            winprizes.Add(prize);
-        }
-
-        public int Count
-        {
-            get { return winprizes.Count; }
-        }
-        public WinPrize GetWinPrize(int index)
-        {
-            if (index >= Count)
-                return null;
-            return winprizes[index];
-        }
-
-
-        private WinPrize GetWinPrizeFromPrize(Prize prize)
-        {
-            WinPrize winprize=null;
-            return winprize;
-        }
-        public void ReadDB(DateTime filterTime)
-        {
-            winprizes.Clear();
-        }
-        public void ReadDB(DateTime startTime,DateTime endTime)
-        {
-            winprizes.Clear();
-        }
-
-        public void SaveDB()
-        {
-        }
-
-
-    }
     public class WinPrize
     {
         /*

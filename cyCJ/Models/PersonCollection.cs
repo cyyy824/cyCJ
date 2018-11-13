@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace cyCJ.Models
 {
-    public class PrizeCollection : CollectionBase<Prize>
+    public class PersonCollection:CollectionBase<Person>
     {
-        public PrizeCollection()
-        {
-        }
         public override void ReadDB()
         {
             var conn = DBContext.DBConnection;
-            var query = conn.Table<Prize>();
+            var query = conn.Table<Person>();
             _items.Clear();
-            foreach(var prize in query)
+            foreach (var item in query)
             {
-                _items.Add(prize);
+                _items.Add(item);
             }
         }
-
     }
 }
