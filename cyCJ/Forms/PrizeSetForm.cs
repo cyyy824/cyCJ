@@ -15,33 +15,88 @@ namespace cyCJ.Forms
 {
     public partial class PrizeSetForm : Form
     {
+        private PrizeCollection prizes;
         public PrizeSetForm(PrizeCollection prizes)
         {
             InitializeComponent();
+            this.prizes = prizes;
         }
 
         private void PrizeSetForm_Load(object sender, EventArgs e)
         {
+            this.prizeListLv.Columns.Add("奖项", 150, HorizontalAlignment.Left);
+            this.prizeListLv.Columns.Add("抽取数量", 100, HorizontalAlignment.Left);
+            this.prizeListLv.VirtualListSize = prizes.Count;
         }
 
         private void prizeListLv_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
+            if (this.prizes == null || this.prizes.Count == 0)
+            {
+                return;
+            }
+            ListViewItem item = new ListViewItem();
+            var prize = prizes.Get(e.ItemIndex);
+            item.Text = prize.Name;
+            item.SubItems.Add(prize.Num.ToString());
+            e.Item = item;
         }
 
         private void addBt_Click(object sender, EventArgs e)
         {
+            var epdlg = new EditPrizeForm("添加", new Prize());
+            epdlg.StartPosition = FormStartPosition.CenterParent;
+            if (epdlg.ShowDialog() == DialogResult.OK)
+            {
+                prizes.Add(epdlg.Prize);
+                this.prizeListLv.VirtualListSize = prizes.Count;
+                prizeListLv.Invalidate();
+            }
         }
 
         private void updateBt_Click(object sender, EventArgs e)
         {
+            int index;
+            try
+            {
+                index = prizeListLv.SelectedIndices[0];
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("{0}", ex.Message);
+                return;
+            }
+            Prize tprize = (Prize)prizes.Get(index).Clone();
+            var epdlg = new EditPrizeForm("修改", tprize);
+            epdlg.StartPosition = FormStartPosition.CenterParent;
+
+            if (epdlg.ShowDialog() == DialogResult.OK)
+            {
+                prizes.Update(index, tprize);
+                prizeListLv.Invalidate();
+            }
         }
 
         private void deleteBt_Click(object sender, EventArgs e)
         {
+            int index;
+            try
+            {
+                index = prizeListLv.SelectedIndices[0];
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("{0}", ex.Message);
+                return;
+            }
+            prizes.Delete(index);
+            this.prizeListLv.VirtualListSize = prizes.Count;
+            prizeListLv.Invalidate();
         }
 
         private void backBt_Click(object sender, EventArgs e)
         {
+            this.Close();
         }
     }
 }

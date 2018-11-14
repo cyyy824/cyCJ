@@ -64,7 +64,7 @@ namespace cyCJ.Models
 
     }
 
-    public class Person
+    public class Person : ICloneable
     {
         [AutoIncrement, PrimaryKey]
         public int Id { get; set; }
@@ -90,6 +90,10 @@ namespace cyCJ.Models
         public override int GetHashCode()
         {
             return Name.GetHashCode();
+        }
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 

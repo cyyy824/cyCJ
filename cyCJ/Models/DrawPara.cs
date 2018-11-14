@@ -8,7 +8,7 @@ using cyCJ.Util;
 
 namespace cyCJ.Models
 {
-    public class DrawPara
+    public class DrawPara:ICloneable
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -55,6 +55,10 @@ namespace cyCJ.Models
             MaskY = 200;
             MaskW = 500;
             MaskH = 400;
+        }
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
 
     }

@@ -9,7 +9,7 @@ using SQLite;
 
 namespace cyCJ.Models
 {
-    public class Prize
+    public class Prize : ICloneable
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -35,6 +35,11 @@ namespace cyCJ.Models
             {
                 return false;
             }
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }

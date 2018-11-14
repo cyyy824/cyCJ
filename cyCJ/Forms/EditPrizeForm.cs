@@ -14,10 +14,14 @@ namespace cyCJ.Forms
 {
     public partial class EditPrizeForm : Form
     {
+        private Prize _prize;
+
+        public Prize Prize { get =>_prize; }
 
         public EditPrizeForm(string dlgname, Prize prize)
         {
             InitializeComponent();
+            _prize = prize;
         }
 
         private void numTb_KeyPress(object sender, KeyPressEventArgs e)
@@ -28,36 +32,41 @@ namespace cyCJ.Forms
             }
         }
 
-        private void addimageBt_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void clearImageBt_Click(object sender, EventArgs e)
-        {
-        }
-
         private void okBt_Click(object sender, EventArgs e)
         {
+            if (!validate())
+                return;
+            _prize.Name = nameTb.Text;
+            _prize.Num = int.Parse(numTb.Text);
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void cancelBt_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
-        private void HaveImage(string path)
-        {
-        }
-
-        private void NoneImage()
-        {
-        }
-
-        private void imgPB_DoubleClick(object sender, EventArgs e)
-        {
-        }
         private bool validate()
         {
-            return false;
+            if (nameTb.Text == "")
+                return false;
+            if (numTb.Text == "")
+                return false;
+            int num;
+            try
+            {
+                num = int.Parse(numTb.Text);
+                if (num <= 0)
+                    return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

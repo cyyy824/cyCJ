@@ -9,7 +9,7 @@ using SQLite;
 
 namespace cyCJ.Models
 {
-    public class WinPrize
+    public class WinPrize:ICloneable
     {
         /*
          * 表现在数据库里的一条记录就是
@@ -25,6 +25,11 @@ namespace cyCJ.Models
 
         public WinPrize()
         {
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
 
     }

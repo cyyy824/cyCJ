@@ -14,39 +14,29 @@ namespace cyCJ.Forms
 {
     public partial class EditPersonForm : Form
     {
+        private Person _person;
 
-
+        public Person Person { get; }
+        
         public EditPersonForm(string dlgname, Person person)
         {
             InitializeComponent();
-        }
-
-        private void addimageBt_Click(object sender, EventArgs e)
-        {
+            _person = person;
         }
 
         private void okBt_Click(object sender, EventArgs e)
         {
+            _person.Name = nameTb.Text;
+            _person.Message = remarkTb.Text;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void cancelBt_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
-        private void clearImageBt_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void HaveImage(string path)
-        {
-        }
-
-        private void NoneImage()
-        {
-        }
-
-        private void imgPB_DoubleClick(object sender, EventArgs e)
-        {
-        }
     }
 }

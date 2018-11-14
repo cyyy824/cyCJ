@@ -15,9 +15,18 @@ namespace cyCJ.Forms
 {
     public partial class WinPrizeShowForm : Form
     {
-        public WinPrizeShowForm(DateTime openTime,string connStr)
+        private WinPrizeCollection winPrizes;
+        public WinPrizeShowForm(DateTime openTime)
         {
             InitializeComponent();
+
+            startTimeTP.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            endTimeTP.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            startTimeTP.Value = openTime;
+            endTimeTP.Value = DateTime.Now;
+
+            winPrizes = new WinPrizeCollection(connStr);
+            winPrizes.ReadDB(startTimeTP.Value, endTimeTP.Value);
         }
 
         private void WinPrizeShowForm_Load(object sender, EventArgs e)

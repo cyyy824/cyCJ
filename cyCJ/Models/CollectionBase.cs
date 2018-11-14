@@ -6,15 +6,24 @@ using System.Threading.Tasks;
 
 namespace cyCJ.Models
 {
-    public abstract class CollectionBase<T>
+    public abstract class CollectionBase<T> 
     {
         protected List<T> _items;
 
+        public int Count
+        {
+            get { return _items.Count; }
+        }
         public CollectionBase()
         {
             _items = new List<T>();
         }
         public abstract void ReadDB();
+
+        public T Get(int index)
+        {
+            return _items[index];
+        }
 
         public int Add(T item)
         {
@@ -32,7 +41,8 @@ namespace cyCJ.Models
         public void Update(int index, T item)
         {
             var conn = DBContext.DBConnection;
-            conn.Update(_items[index]);
+            conn.Update(item);
+            _items[index] = item;
         }
         public void Delete(int index)
         {
@@ -45,7 +55,7 @@ namespace cyCJ.Models
         public void Clear()
         {
             var conn = DBContext.DBConnection;
-            conn.DeleteAll<Prize>();
+            conn.DeleteAll<T>();
             _items.Clear();
         }
     }
