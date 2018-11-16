@@ -21,7 +21,7 @@ namespace cyCJ.Models
         public string PrizeName { get; set; }
         public string PersonName { get; set; }
         public string PersonMessage { get; set; }
-        private DateTime DrawTime { get; set; }
+        public DateTime DrawTime { get; set; }
 
         public WinPrize()
         {

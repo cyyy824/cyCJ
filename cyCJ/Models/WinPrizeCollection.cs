@@ -18,5 +18,12 @@ namespace cyCJ.Models
                 _items.Add(item);
             }
         }
+        public List<WinPrize> filterTime(DateTime stime,DateTime etime)
+        {
+            var rlist= _items.FindAll(c => c.DrawTime >= stime && c.DrawTime < etime);
+
+            return rlist;
+
+        }
     }
 }
