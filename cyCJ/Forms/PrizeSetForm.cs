@@ -16,10 +16,11 @@ namespace cyCJ.Forms
     public partial class PrizeSetForm : Form
     {
         private PrizeCollection prizes;
-        public PrizeSetForm(PrizeCollection prizes)
+        public PrizeSetForm()
         {
             InitializeComponent();
-            this.prizes = prizes;
+            prizes = new PrizeCollection();
+            prizes.ReadDB();
         }
 
         private void PrizeSetForm_Load(object sender, EventArgs e)

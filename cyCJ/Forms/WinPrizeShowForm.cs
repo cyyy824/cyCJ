@@ -43,6 +43,7 @@ namespace cyCJ.Forms
 
         private void searchBt_Click(object sender, EventArgs e)
         {
+            _wins = winPrizes.filterTime(startTimeTP.Value, endTimeTP.Value);
             this.RefreshPrize();
         }
 
@@ -53,18 +54,16 @@ namespace cyCJ.Forms
 
         private void RefreshPerson(int prizeIndex)
         {
+            string pn = prizeLv.Items[prizeIndex].Text;
+            var slist = _wins.FindAll(c => c.PrizeName == pn);
+
             personLv.Items.Clear();
             personLv.BeginUpdate();
-            WinPrize wp = winPrizes.Get(prizeIndex);
-            List<Person> persons = wp.Persons;
-            foreach (var pr in persons)
+            foreach (var wp in slist)
             {
                 ListViewItem item = new ListViewItem();
-                item.Text = pr.Name;
-
-                //    item.SubItems.Add(wp.DrawTime.ToString("yyyy-MM-dd HH:mm:ss"));
-                item.SubItems.Add(pr.Text);
-                item.SubItems.Add(pr.Picpath);
+                item.Text = wp.PersonName;
+                item.SubItems.Add(wp.PersonMessage);
                 personLv.Items.Add(item);
             }
             personLv.EndUpdate();
@@ -74,12 +73,15 @@ namespace cyCJ.Forms
             prizeLv.Items.Clear();
             prizeLv.BeginUpdate();
 
-            for (int i = 0; i < winPrizes.Count; i++)
+            var plist = new List<string>();
+            foreach(var wp in _wins)
             {
-                ListViewItem item = new ListViewItem();
-                var wp = winPrizes.Get(i);
-                item.Text = wp.PrizeName;
-                prizeLv.Items.Add(item);
+                if( !plist.Contains(wp.PrizeName))
+                {
+                    plist.Add(wp.PrizeName);
+                    ListViewItem item = new ListViewItem();
+                    prizeLv.Items.Add(wp.PrizeName);
+                }
             }
             prizeLv.EndUpdate();
         }
@@ -90,6 +92,17 @@ namespace cyCJ.Forms
 
         private void exportBt_Click(object sender, EventArgs e)
         {
+            int index;
+            try
+            {
+                index = prizeLv.SelectedIndices[0];
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("{0}", ex.Message);
+                return;
+            }
+            RefreshPerson(index);
         }
     }
 }

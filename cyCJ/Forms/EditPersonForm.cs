@@ -16,7 +16,7 @@ namespace cyCJ.Forms
     {
         private Person _person;
 
-        public Person Person { get; }
+        public Person Person { get=>_person; }
         
         public EditPersonForm(string dlgname, Person person)
         {

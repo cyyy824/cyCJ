@@ -20,10 +20,11 @@ namespace cyCJ.Forms
     {
         public PersonCollection persons;
 
-        public PersonSetForm(PersonCollection persons)
+        public PersonSetForm()
         {
             InitializeComponent();
-            this.persons = persons;
+            this.persons = new PersonCollection();
+            persons.ReadDB();
         }
 
         private void addBt_Click(object sender, EventArgs e)

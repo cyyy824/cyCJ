@@ -23,7 +23,7 @@ namespace cyCJ.Forms
             DrawCancel,
         };
 
-        public DrawPrizeForm(PersonCollection persons,Config config,PrizeCollection prizes,ImageDB imgdb,DateTime filterTime,int drawType)
+        public DrawPrizeForm(DateTime filterTime)
         {
             InitializeComponent();
             

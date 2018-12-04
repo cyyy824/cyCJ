@@ -200,7 +200,6 @@
             this.startTimeTP.Name = "startTimeTP";
             this.startTimeTP.Size = new System.Drawing.Size(200, 39);
             this.startTimeTP.TabIndex = 37;
-            this.startTimeTP.ValueChanged += new System.EventHandler(this.startTimeTP_ValueChanged);
             // 
             // label1
             // 

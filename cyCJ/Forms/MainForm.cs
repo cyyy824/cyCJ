@@ -28,16 +28,24 @@ namespace cyCJ.Forms
         // 打开抽奖人群设置对话框
         private void setPersonBt_Click(object sender, EventArgs e)
         {
+            var pform = new PersonSetForm();
+            pform.StartPosition = FormStartPosition.CenterParent;
+            pform.ShowDialog();
         }
 
         // 打开抽奖奖项设置对话框
         private void setPrizeBt_Click(object sender, EventArgs e)
         {
+            var pform = new PrizeSetForm();
+            pform.StartPosition = FormStartPosition.CenterParent;
+            pform.ShowDialog();
         }
 
         // 打开抽奖页面
         private void drawBt_Click(object sender, EventArgs e)
         {
+            var dform = new DrawPrizeForm(startTimeTP.Value);
+            dform.ShowDialog();
         }
 
         // 设置抽奖页面静态背景
@@ -103,14 +111,14 @@ namespace cyCJ.Forms
 
         private void winprizeShowBt_Click(object sender, EventArgs e)
         {
+            WinPrizeShowForm wpForm = new WinPrizeShowForm(startTimeTP.Value);
+            wpForm.StartPosition = FormStartPosition.CenterParent;
+            wpForm.ShowDialog();
         }
 
         private void drawTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
 
-        private void startTimeTP_ValueChanged(object sender, EventArgs e)
-        {
-        }
     }
 }

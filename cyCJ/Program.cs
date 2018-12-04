@@ -21,7 +21,7 @@ namespace cyCJ
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-         //   Application.Run(new cyCJ.Forms.MainForm());
+            Application.Run(new cyCJ.Forms.MainForm());
         }
     }
 }
